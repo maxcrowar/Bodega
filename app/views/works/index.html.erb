@@ -1,0 +1,26 @@
+<h1>Listing works</h1>
+
+<table>
+<% @works.each do |work| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td>
+      <%= image_tag(work.picture_url, class: 'list_image') %>
+    </td>
+    <td class="list_description">
+      <dl>
+        <dt><%= work.title %></dt>
+        <dd><%= truncate(strip_tags(work.description), length: 80) %></dd>
+      </dl>
+    </td>
+    <td class="list_actions">
+      <%= link_to 'Show', work %><br/>
+      <%= link_to 'Edit', edit_work_path(work) %><br/>
+      <%= link_to 'Destroy', work, method: :delete,
+      data: { confirm: '¿Esta seguro?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+<br>
+
+<%= link_to 'New Work', new_work_path %>
