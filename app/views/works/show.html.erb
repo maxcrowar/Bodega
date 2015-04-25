@@ -1,5 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<%= form_for @work, html: { multipart: true } do |f| %>
+  <p>
+    <label>Mi Obra</label>
+    <%= image_tag(@work.picture_url) if @work.picture? %>
+    <!--<%= f.file_field :picture %> -->
+    <%= f.hidden_field :picture_cache %>
+  </p>
+<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @work.title %>
