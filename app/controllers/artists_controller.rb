@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.all
+    @artists = Artist.order(:name)
   end
 
   # GET /artists/1
@@ -28,7 +28,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.save
-        format.html { redirect_to @artist, notice: 'Artist was successfully created.' }
+        format.html { redirect_to artists_url, notice: "Artist #{@artist.name} was successfully created." }
         format.json { render action: 'show', status: :created, location: @artist }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ArtistsController < ApplicationController
   def update
     respond_to do |format|
       if @artist.update(artist_params)
-        format.html { redirect_to @artist, notice: 'Artist was successfully updated.' }
+        format.html { redirect_to artists_url, notice: "Artist #{@artist.name} was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

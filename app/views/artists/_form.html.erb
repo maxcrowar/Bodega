@@ -11,23 +11,30 @@
     </div>
   <% end %>
 
+  <fieldset>
+    <legend>Enter Artist Details</legend>
+  
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name, 'Name:' %><br>
+    <%= f.text_field :name, size: 40 %>
   </div>
+  
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, size: 40 %>
   </div>
+  
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password,  size: 40 %>
   </div>
   <div>
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, size: 40 %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  </fieldset>
 <% end %>
