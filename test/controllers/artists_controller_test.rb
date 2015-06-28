@@ -18,11 +18,10 @@ class ArtistsControllerTest < ActionController::TestCase
 
   test "should create artist" do
     assert_difference('Artist.count') do
-      post :create, artist: { email: @artist.email, name: @artist.name, password: 'secret',
-                            password_confirmation: 'secret' }
+      post :create, artist: { email: @artist.email, name: @artist.name, password: 'secret', password_confirmation: 'secret' }
     end
 
-    assert_redirected_to artists_path
+    assert_redirected_to artist_path(assigns(:artist))
   end
 
   test "should show artist" do
@@ -36,9 +35,8 @@ class ArtistsControllerTest < ActionController::TestCase
   end
 
   test "should update artist" do
-    patch :update, id: @artist, artist: { email: @artist.email, name: @artist.name, password: 'secret',
-                                        password_confirmation: 'secret' }
-    assert_redirected_to artists_path
+    patch :update, id: @artist, artist: { email: @artist.email, name: @artist.name, password: 'secret', password_confirmation: 'secret' }
+    assert_redirected_to artist_path(assigns(:artist))
   end
 
   test "should destroy artist" do
