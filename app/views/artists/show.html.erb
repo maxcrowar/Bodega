@@ -1,14 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @artist.name %>
-</p>
+<div class="row">
+	<aside class="small-2 columns">
+		<section class"artist_info">
+			<h1>
+				<%= gravatar_for @artist %>
+				<%= @artist.name %>
+			</h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @artist.email %>
-</p>
+			<p>
+			  <strong>Name:</strong>
+			  <%= @artist.name %>
+			</p>
+			<p>
+			  <strong>Email:</strong>
+			  <%= @artist.email %>
+			</p>
+		</section>
+	
+	<%= link_to 'Edit', edit_artist_path(@artist) %> |
+	<%= link_to 'Back', artists_path %>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+	</aside>
+
+	<section class="small-10 columns">
+		<h2>Obras</h2>
+	</section>
+		
+</div>
+
+

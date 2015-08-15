@@ -10,6 +10,7 @@ class ArtistsController < ApplicationController
   # GET /artists/1
   # GET /artists/1.json
   def show
+    @artist = Artist.find(params[:id])
   end
 
   # GET /artists/new
@@ -28,7 +29,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.save
-        format.html { redirect_to artists_url, notice: "Artist #{@artist.name} was successfully created." }
+        format.html { redirect_to @artist, notice: "#{@artist.name} bienvenido a Bodega de Arte." }
         format.json { render action: 'show', status: :created, location: @artist }
       else
         format.html { render action: 'new' }
