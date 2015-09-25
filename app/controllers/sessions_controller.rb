@@ -3,17 +3,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	artist = Artist.find_by(name: params[:name])
-		if artist and artist.authenticate(params[:password])
-			session[:artist_id] = artist.id
-			redirect_to admin_url
+  	artist = Artist.find_by(email: params[:session][:email].downcase)
+		if artist and artist.authenticate(params[:session][:password])
+			log_in artist
+      params[:session [:remember_me] == '1' ? remember(artist) : forget(artist)
+			redirect_to artist
 		else
-			redirect_to login_url, alert: "Invalid user/password combination"
+			flash.now[:danger] = 'Invalid user/password combination'
+      render 'new'
 		end
   end
 
   def destroy
-  	session[:artist_id] = nil
-		redirect_to work_url, notice: "Logged out"
+  	log_out if logged_in?
+		redirect_to root_url
   end
 end

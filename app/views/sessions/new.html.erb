@@ -1,25 +1,28 @@
-<h1>Sessions#new</h1>
+<% provide(:title, "Log in") %>
+<h1>Log in</h1>
 
 <% if flash[:alert] %>
 	<p id="notice"><%= flash[:alert] %></p>
 <% end %>
-<%= form_tag do %>
-	<fieldset>
-		<legend>Please Log In</legend>
-		<div>
-			<%= label_tag :name, 'Name:' %>
-			<%= text_field_tag :name, params[:name] %>
-		</div>
-		<div>
-			<%= label_tag :email, 'Email:' %>
-			<%= text_field_tag :email, params[:email] %>
-		</div>
-		<div>
-			<%= label_tag :password, 'Password:' %>
-			<%= password_field_tag :password, params[:password] %>
-		</div>
-		<div>
-			<%= submit_tag "Login" %>
-		</div>
-	</fieldset>
-<% end %>
+
+<div class="row">
+	<div class="medium-6 columns">
+		<%= form_for(:session, url: login_path) do |f| %>
+			<%= f.label :email %>
+			<%= f.email_field :email, class: 'form-control' %>
+			
+			<%= f.label :password %>
+			<%= f.password_field :password, class: 'form-control' %>
+			
+			<%= f.label :remember_me, class: "checkbox inline" do %>
+			<%= f.check_box :remember_me %>
+			<span>Remember me</span>
+			<% end %>
+			
+			<%= f.submit "Log in", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+	<div class="medium-6 columns">
+		<p>New artist? <%= link_to "Sign up now!", new_artist_path %></p>
+	</div>
+</div>

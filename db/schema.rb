@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425150706) do
+ActiveRecord::Schema.define(version: 20150919160508) do
 
   create_table "artists", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150425150706) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_digest"
   end
 
   create_table "works", force: true do |t|
