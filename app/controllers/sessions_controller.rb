@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   	artist = Artist.find_by(email: params[:session][:email].downcase)
 		if artist and artist.authenticate(params[:session][:password])
 			log_in artist
-      params[:session [:remember_me] == '1' ? remember(artist) : forget(artist)
+      params[:session][:remember_me] == '1' ? remember(artist) : forget(artist)
 			redirect_to artist
 		else
 			flash.now[:danger] = 'Invalid user/password combination'

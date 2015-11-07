@@ -1,29 +1,32 @@
-<header class="top-bar foundation-bar">
-	<div class="container">
-		<%= link_to "Bodega de Arte", root_path, id: "logo" %>
-		<nav>
-			<ul class="title-area right">
-				<li><%= link_to "Home", root_path %></li>
-				<li><%= link_to "Help", help_path %></li>
-				<% if logged_in? %>
-					<li><%= link_to "Artists", '#' %></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							Account <b class="caret"></b>
-						</a>
-						<ul class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-							<li><%= link_to "Profile", current_user %></li>
-							<li><%= link_to "Settings", '#' %></li>
-							<li class="divider"></li>
-							<li>
-								<%= link_to "Log out", logout_path, method: "delete" %>
-							</li>
-						</ul>
-					</li>
-				<% else %>
+<header>
+	<nav class="top-bar" data-topbar role="navigation">
+	  <ul class="title-area">
+	    <li class="name">
+	      <%= link_to "Bodega de Arte", root_path, id: "logo" %> <!--<h1><a href="#">Bodega de Arte</a></h1> -->
+	    </li>
+	     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+	    <li class="toggle-topbar"><a href="#"><span>Menu</span></a></li>
+	  </ul>
+
+	  <section class="top-bar-section">
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+	      <li><%= link_to "Home", root_path %></li>
+      	<li><%= link_to "Artists", artists_path %></li>
+	      <% if logged_in? %>
+	      	<li class="has-dropdown">
+	      		<a href="#">Account</a>	        
+		        <ul class="dropdown">
+		          <li><%= link_to "Profile", current_artist %></li>
+		          <li><%= link_to "Settings", '#' %></li>
+		          <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+		        </ul>
+		      </li>
+        <% else %>
 					<li><%= link_to "Log in", login_path %></li>
 				<% end %>
-			</ul>
-		</nav>
-	</div>
+				
+	    </ul>
+	  </section>
+	</nav>
 </header>

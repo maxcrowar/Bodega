@@ -1,6 +1,6 @@
 Bodega::Application.routes.draw do
   get 'admin' => 'admin/index'
-  
+  get 'signup' => 'artists#new'
 
   controller :sessions do
     get 'login' => :new

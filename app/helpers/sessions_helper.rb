@@ -25,8 +25,8 @@ module SessionsHelper
 	end
 
 	# Returns true if the artist is logged in, false otherwise.
-	def logged_in?
-		!current_artist.nil?
+	def logged_in? # obj - nil
+		current_artist
 	end
 
 	# Forgets a persistent session.
